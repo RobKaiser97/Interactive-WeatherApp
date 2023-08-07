@@ -27,52 +27,111 @@
 
 
 
-var searchResult = document.getElementById('button-addon2').addEventListener('click', (event) => {
+// var searchResult = document.getElementById('button-addon2').addEventListener('click', (event) => {
+//     // Prevent the default form submission behavior
+//     event.preventDefault();
+
+//     // Get the value from the input field
+//     const query = document.getElementById('search-input').value;
+
+//     // add query to the local storage
+//     localStorage.setItem('city name', query);
+
+
+//     // Do something with the search query
+//     processQuery(query);
+
+// });
+
+// processQuery = (query) => {
+//     console.log("Search query:", query);
+//     createNewSearchLink(query);
+
+//     // Here you can process the query, e.g., call an API, filter results, etc.
+// }
+
+
+// createNewSearchLink = (query) => {
+//     // Create a new <a> element
+//     const newLink = $('<a>');
+
+//     // Set the href attribute
+//     newLink.attr('href', 
+//     'https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=7d03544563882cc0c835356bf14a646b');
+//     newLink.addClass('list-group-item list-group-item-action');
+
+//     // Set the text() content
+//     newLink.textContent = query;
+
+//     // Add the new element to the DOM
+//     $('past-searches').append(newLink);
+// }
+
+// capturePastSearches = () => {
+//     localStorage.setItem('Past Search Results', $('past-searches').text());
+// }
+
+// loadPastSearches = () => {
+//     $(document).ready(() => {
+//         let pastSearches = localStorage.getItem('Past Search Results');
+//         if (pastSearches) {
+//             $('past-searches').text(pastSearches);
+//         }
+//     })};
+
+
+fetchWeatherAPI = (searchResult) => {
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + searchResult + '&appid=7d03544563882cc0c835356bf14a646b' +
+    '&units=imperial')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    let humidity = data.main.humidity;
+    let windSpeed = data.wind.speed;
+    let temp = data.main.temp;
+    let date = new Date(data.dt * 1000).toDateString() + $('<br>') + data.weather[0].icon;
+
+    // document.getElementById('date-icon-main').textContent(date);
+    document.getElementById('temp-main').innerHTML = temp;
+    $('#humidity-main').text(humidity);
+    $('#wind-speed-main').text(windSpeed);
+
+    })
+    .catch(err => alert("Enter a valid city name!"));
+}
+
+const searchResult = document.getElementById('button-addon2').addEventListener('click', (event) => {
     // Prevent the default form submission behavior
     event.preventDefault();
 
     // Get the value from the input field
-    const query = document.getElementById('search-input').value;
+    let query = document.getElementById('search-input').value;
 
-    // add query to the local storage
-    localStorage.setItem('city name', query);
+    // // add query to the local storage
+    // let city = JSON.stringify(query);
+    // localStorage.setItem('city name', query);
+    // localStorage.getItem('city name').append(query);
 
 
-    // Do something with the search query
-    processQuery(query);
+    fetchWeatherAPI(query);
+    console.log(query);
+    console.log(fetchWeatherAPI)
+    
 });
 
-processQuery = (query) => {
-    console.log("Search query:", query);
-    createNewSearchLink(query);
+// let cities = [];
 
-    // Here you can process the query, e.g., call an API, filter results, etc.
-}
+// let searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+// for (let i = 0; i < searchHistory.length; i++) {
+//   getHistory(searchHistory[i]);
+// }
 
-
-createNewSearchLink = (query) => {
-    // Create a new <a> element
-    const newLink = $('<a>');
-
-    // Set the href attribute
-    newLink.attr('href', 'https://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=7d03544563882cc0c835356bf14a646b');
-    newLink.addClass('list-group-item list-group-item-action');
-
-    // Set the text content
-    newLink.textContent = query;
-
-    // Add the new element to the DOM
-    $('past-searches').append(newLink);
-}
-
-capturePastSearches = () => {
-    localStorage.setItem('Past Search Results', $('past-searches').html());
-}
-
-loadPastSearches = () => {
-    $(document).ready(() => {
-        let pastSearches = localStorage.getItem('Past Search Results');
-        if (pastSearches) {
-            $('past-searches').html(pastSearches);
-        }
-    })};
+// // Save the city searched in the local storage
+// const saveToLocalStorage = (city) => {
+//   cities = JSON.parse(localStorage.getItem("city")) || [];
+//   if (!cities.includes(city)) {
+//     cities.push(city);
+//     localStorage.setItem("city", JSON.stringify(cities));
+//     getHistory(city);
+//   }
+// };
