@@ -98,3 +98,42 @@ const updateDailyUI = (dayIndex, data) => {
     });
   };
   
+  // Function to save search history in local storage
+  const saveSearchHistory = (cityName) => {
+    // Get existing history or initialize with empty array if not available
+    let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  
+    // Avoid saving duplicate city names
+    if (!history.includes(cityName)) {
+      history.push(cityName);
+  
+      // Save updated history
+      localStorage.setItem("searchHistory", JSON.stringify(history));
+  
+      // Create a new anchor tag
+      let a = document.createElement("a");
+      a.href = "#";
+      a.className = "list-group-item list-group-item-action";
+      a.textContent = cityName;
+  
+      // Add an event listener to the anchor tag
+      a.addEventListener("click", async (event) => {
+        event.preventDefault();
+        try {
+          const weatherData = await fetchWeatherData(cityName);
+          updateUI(weatherData);
+          const lat = weatherData.coord.lat;
+          const lon = weatherData.coord.lon;
+          fetchWeatherData5Day(lat, lon);
+        } catch (err) {
+          console.error(err);
+          alert("Error occurred. Please try again.");
+        }
+      });
+  
+      // Add the anchor tag to the #past-searches div
+      document.getElementById("past-searches").appendChild(a);
+    }
+  };
+  
+  
