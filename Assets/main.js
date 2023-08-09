@@ -42,3 +42,59 @@ const fetchWeatherData5Day = async (lat, lon) => {
     });
 };
 
+// Function to update UI for a day in the 5-day forecast
+const updateDailyUI = (dayIndex, data) => {
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+  
+    // Update UI elements with fetched data
+    document.getElementById(`date-main-${dayIndex}`).textContent = new Date(
+      data.dt * 1000
+    ).toLocaleString();
+    document.getElementById(`weather-icon-${dayIndex}`).src = iconUrl;
+    document.getElementById(`temp-main-${dayIndex}`).textContent =
+      data.main.temp + " °F";
+    document.getElementById(`humidity-main-${dayIndex}`).textContent =
+      data.main.humidity + "%";
+    document.getElementById(`wind-main-${dayIndex}`).textContent =
+      data.wind.speed + " MPH";
+  };
+  
+  // Function to update UI with current weather data
+  const updateUI = (data) => {
+    // Prefixes of element IDs to update. Elements to be updated have unique numeric suffixes.
+    const idPrefixes = [
+      "temp-main",
+      "humidity-main",
+      "wind-main",
+      "weather-icon",
+      "date-main",
+    ];
+  
+    // Iterate over prefixes and update corresponding elements
+    idPrefixes.forEach((prefix) => {
+      let elements = document.querySelectorAll(`[id^="${prefix}-"]`);
+      elements.forEach((element, index) => {
+        switch (prefix) {
+          case "temp-main":
+            element.textContent = `${data.main.temp} °F`;
+            break;
+          case "humidity-main":
+            element.textContent = `${data.main.humidity}%`;
+            break;
+          case "wind-main":
+            element.textContent = `${data.wind.speed} MPH`;
+            break;
+          case "weather-icon":
+            const iconCode = data.weather[0].icon;
+            element.src = `http://openweathermap.org/img/w/${iconCode}.png`;
+            break;
+          case "date-main":
+            const date = new Date(data.dt * 1000);
+            element.textContent = `${data.name}, US, ${date.toLocaleString()}`;
+            break;
+        }
+      });
+    });
+  };
+  
