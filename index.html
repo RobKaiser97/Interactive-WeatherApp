@@ -1,24 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
-    crossorigin="anonymous">
-    
-
-    <title>Hello, world!</title>
+    <title>Current Weather</title>
   </head>
   <body class="bg-body-secondary">
     <nav class="navbar bg-primary bg-gradient">
       <div class="container-fluid">
-        <span class="navbar-brand m-auto h-1 fs-1 text-white-50">Local Forecast</span>
+        <span class="navbar-brand m-auto h-1 fs-1 text-white-50"
+          >Local Forecast</span
+        >
       </div>
     </nav>
 
@@ -26,110 +29,133 @@
       <div class="row align-items-start mx-2 my-2">
         <div class="col-lg-2 col-sm-12">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="City" aria-label="City Search" 
-            aria-describedby="button-addon2" id="search-input">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="City"
+              aria-label="City Search"
+              aria-describedby="button-addon2"
+              id="search-input"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2"
+            >
+              <i class="bi bi-search"></i>
+            </button>
           </div>
-          <div class="list-group" id="past-searches">
-            <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>
-          </div>
+          <div class="list-group" id="past-searches"></div>
         </div>
         <div class="col-lg-10 col-sm-12 m-0 p-1 pt-sm-5">
-          <div class="card" >
-            <div class="card-header" id="date-icon-main">
-              Date
-              <br>
-              Icon
-            </div>
+          <div class="card">
+            <div class="card-header bg-dark-subtle" id="date-main-0">Date</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item" id="temp-main">temp</li>
-              <li class="list-group-item" id="wind-main">wind</li>
-              <li class="list-group-item" id="humidity-main">humidity</li>
+              <li class="list-group-item bg-dark-subtle">
+                <img src="" alt="weather-icon" id="weather-icon-0" />
+              </li>
+              <li class="list-group-item bg-dark-subtle" id="temp-main-0">
+                temp
+              </li>
+              <li class="list-group-item bg-dark-subtle" id="wind-main-0">
+                wind
+              </li>
+              <li class="list-group-item bg-dark-subtle" id="humidity-main-0">
+                humidity
+              </li>
             </ul>
           </div>
           <div class="row justify-content-between mt-5 mt-sm-1">
             <div class="col-lg-2 col-sm-12 pt-sm-5">
-              <div class="card" >
-                <div class="card-header" id="5day1">
+              <div class="card">
+                <div class="card-header bg-dark-subtle" id="date-main-1">
                   Date
-                  <br>
-                  Icon
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">temp</li>
-                  <li class="list-group-item">wind</li>
-                  <li class="list-group-item">humidity</li>
-                </ul>
-              </div>
-            </div>
-              <div class="col-lg-2 col-sm-12 pt-sm-5">
-                <div class="card" >
-                <div class="card-header" id="5day2">
-                  Date
-                  <br>
-                  Icon
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">temp</li>
-                  <li class="list-group-item">wind</li>
-                  <li class="list-group-item">humidity</li>
+                  <li class="list-group-item bg-dark-subtle">
+                    <img src="" alt="weather-icon" id="weather-icon-1" />
+                  </li>
+                  <li class="list-group-item" id="temp-main-1">temp</li>
+                  <li class="list-group-item" id="wind-main-1">wind</li>
+                  <li class="list-group-item" id="humidity-main-1">humidity</li>
                 </ul>
               </div>
             </div>
             <div class="col-lg-2 col-sm-12 pt-sm-5">
-              <div class="card" >
-                <div class="card-header" id="5day3">
+              <div class="card">
+                <div class="card-header bg-dark-subtle" id="date-main-2">
                   Date
-                  <br>
-                  Icon
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">temp</li>
-                  <li class="list-group-item">wind</li>
-                  <li class="list-group-item">humidity</li>
+                  <li class="list-group-item bg-dark-subtle">
+                    <img src="" alt="weather-icon" id="weather-icon-2" />
+                  </li>
+                  <li class="list-group-item" id="temp-main-2">temp</li>
+                  <li class="list-group-item" id="wind-main-2">wind</li>
+                  <li class="list-group-item" id="humidity-main-2">humidity</li>
                 </ul>
               </div>
             </div>
             <div class="col-lg-2 col-sm-12 pt-sm-5">
-              <div class="card" >
-                <div class="card-header" id="5day4">
+              <div class="card">
+                <div class="card-header bg-dark-subtle" id="date-main-3">
                   Date
-                  <br>
-                  Icon
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">temp</li>
-                  <li class="list-group-item">wind</li>
-                  <li class="list-group-item">humidity</li>
+                  <li class="list-group-item bg-dark-subtle">
+                    <img src="" alt="weather-icon" id="weather-icon-3" />
+                  </li>
+                  <li class="list-group-item" id="temp-main-3">temp</li>
+                  <li class="list-group-item" id="wind-main-3">wind</li>
+                  <li class="list-group-item" id="humidity-main-3">humidity</li>
                 </ul>
               </div>
             </div>
             <div class="col-lg-2 col-sm-12 pt-sm-5">
-              <div class="card" >
-                <div class="card-header" id="5day5">
+              <div class="card">
+                <div class="card-header bg-dark-subtle" id="date-main-4">
                   Date
-                  <br>
-                  Icon
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">temp</li>
-                  <li class="list-group-item">wind</li>
-                  <li class="list-group-item">humidity</li>
+                  <li class="list-group-item bg-dark-subtle">
+                    <img src="" alt="weather-icon" id="weather-icon-4" />
+                  </li>
+                  <li class="list-group-item" id="temp-main-4">temp</li>
+                  <li class="list-group-item" id="wind-main-4">wind</li>
+                  <li class="list-group-item" id="humidity-main-4">humidity</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-2 col-sm-12 pt-sm-5">
+              <div class="card">
+                <div class="card-header bg-dark-subtle" id="date-main-5">
+                  Date
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-dark-subtle">
+                    <img src="" alt="weather-icon" id="weather-icon-5" />
+                  </li>
+                  <li class="list-group-item" id="temp-main-5">temp</li>
+                  <li class="list-group-item" id="wind-main-5">wind</li>
+                  <li class="list-group-item" id="humidity-main-5">humidity</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-              
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
-    crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-    crossorigin="anonymous"></script>
-    <script src="./Assets/main.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="Assets/main.js"></script>
   </body>
 </html>
