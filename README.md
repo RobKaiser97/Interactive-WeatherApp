@@ -15,7 +15,7 @@ No installation required, navigate to "[github hosted version of html](https://r
 3. Click on the magnify glass icon located at the end of the searchbar to gather your results.
 4. History of searches will appear below the search bar. Entries will be cleared from local storage when browser is closed.
 
-![Webpage Screenshot](/Assets/Images/workday_Scheduler_screenshot.jpg)
+![Webpage Screenshot](website_screenshot.PNG)
 
 
 ## Credits
