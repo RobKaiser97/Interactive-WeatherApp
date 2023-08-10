@@ -77,13 +77,13 @@ const updateUI = (data) => {
     elements.forEach((element, index) => {
       switch (prefix) {
         case "temp-main":
-          element.textContent = `${data.main.temp} °F`;
+          element.textContent = `Temp: ${data.main.temp} °F`;
           break;
         case "humidity-main":
-          element.textContent = `${data.main.humidity}%`;
+          element.textContent = `Humidity: ${data.main.humidity}%`;
           break;
         case "wind-main":
-          element.textContent = `${data.wind.speed} MPH`;
+          element.textContent = `Wind: ${data.wind.speed} MPH`;
           break;
         case "weather-icon":
           const iconCode = data.weather[0].icon;
