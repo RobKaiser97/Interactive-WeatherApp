@@ -6,7 +6,7 @@ An interactive, responsive web page to gather weather forecasts based on searche
 
 ## Installation
 
-No installation required, navigate to "[github hosted version of html](https://robkaiser97.github.io/Workday_Event_Scheduler/)" to veiw the project.
+No installation required, navigate to "[github hosted version of html](https://robkaiser97.github.io/Interactive-WeatherApp/)" to veiw the project.
 
 ## Usage
 
