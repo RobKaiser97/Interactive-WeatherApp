@@ -210,3 +210,7 @@ window.onload = () => {
     document.getElementById("button-addon2").click();
   }
 };
+
+window.onbeforeunload = () => {
+  localStorage.removeItem("searchHistory"); // Clear a specific item in local storage
+};
