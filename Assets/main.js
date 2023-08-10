@@ -191,7 +191,7 @@ window.onload = () => {
     // Add event listener for 'Enter' key on search input field
     document
       .getElementById("search-input")
-      .addEventListener("keypress", function (event) {
+      .addEventListener("keydown", function (event) {
         // Check if the key pressed was the 'Enter' key
         if (event.key === "Enter") {
           // Prevent the default action
