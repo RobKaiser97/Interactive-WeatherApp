@@ -211,6 +211,16 @@ window.onload = () => {
   }
 };
 
-window.onbeforeunload = () => {
-  localStorage.removeItem("searchHistory"); // Clear a specific item in local storage
+window.onbeforeunload = function (e) {
+    window.localStorage.unloadTime = JSON.stringify(new Date());
 };
+window.onload = function () {
+    let loadTime = new Date();
+    let unloadTime = new Date(JSON.parse(window.localStorage.unloadTime));
+    let refreshTime = loadTime.getTime() - unloadTime.getTime();
+    if(refreshTime>3000) //3000 milliseconds
+    {
+        localStorage.removeItem('searchHistory');
+    }
+};
+
